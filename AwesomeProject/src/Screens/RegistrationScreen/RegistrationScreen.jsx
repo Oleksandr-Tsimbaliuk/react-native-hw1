@@ -14,10 +14,13 @@ const RegistrationScreen = () => {
   const handleRemoveUserImage = () => {
     setUserImage(null);
   };
+  const handleFormSubmitButton = () => {
+    console.log(login, email, password);
+  };
   return (
     <View style={styles.registrationContainer}>
       <View style={styles.userImageContainer}>
-        <Image source={{ uri: "" }}></Image>
+        {/* <Image source={{ uri: "" }}></Image> */}
         <Button onPress={handleAddUserImage} title="Add photo" />
         <Button onPress={handleRemoveUserImage} title="Remove photo" />
       </View>
@@ -29,7 +32,11 @@ const RegistrationScreen = () => {
         <TextInput placeholder="Адреса електронної пошти"></TextInput>
         <TextInput placeholder="Пароль"></TextInput>
       </View>
-      <Button title="Зареєструватися" />
+      <Text
+        onPress={handleFormSubmitButton}
+        style={styles.registrationFormSubmitButton}
+        title="Зареєструватися"
+      />
       <Text>Немає акаунту? Зареєструватися</Text>
     </View>
   );
