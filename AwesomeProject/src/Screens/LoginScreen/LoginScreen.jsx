@@ -12,10 +12,9 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.registrationForm}>
-      <View style={styles.registrationContainer}>
-        <Text style={styles.loginFormHeader}>Увійти</Text>
-
+    <View style={styles.loginContainer}>
+      <Text style={styles.loginFormHeader}>Увійти</Text>
+      <View style={styles.loginForm}>
         <InputRegistration
           name={"email"}
           type={"email"}
@@ -30,7 +29,7 @@ const LoginScreen = () => {
         ></InputRegistration>
       </View>
       <TouchableOpacity
-        style={styles.registrationFormSubmitButton}
+        style={styles.loginFormSubmitButton}
         onPress={handleFormSubmitButton}
         title="Зареєструватися"
       >
@@ -41,7 +40,7 @@ const LoginScreen = () => {
             color: "#ffffff",
           }}
         >
-          Зареєструватися
+          Увійти
         </Text>
       </TouchableOpacity>
       <Text

@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  registrationContainer: {
+  loginContainer: {
     position: "absolute",
-    top: "32.5%",
+    top: "40%",
     width: "100%",
     height: "100%",
     paddingLeft: 16,
@@ -15,37 +15,24 @@ export const styles = StyleSheet.create({
     // marginTop: "auto",
     // display: "flex",
   },
-  userImageContainer: {
-    position: "absolute",
-    left: 128,
-    marginRight: "auto",
-    marginLeft: "auto",
-    top: -60,
-    height: 120,
-    width: 120,
-    borderRadius: 16,
-    backgroundColor: "#F6F6F6",
-  },
-  registrationForm: {
+
+  loginForm: {
     // display: "flex",
     marginTop: 32,
-    marginBottom: 40,
     gap: 16,
-    // top: -32,
   },
   loginFormHeader: {
-    margin: 0,
-    padding: 0,
-    marginBottom: 32,
+    marginTop: 32,
     fontFamily: "Roboto-Bold",
     fontWeight: 500,
     fontSize: 30,
     lineHeight: 35,
     textAlign: "center",
   },
-  registrationFormSubmitButton: {
+  loginFormSubmitButton: {
     width: "100%",
     height: 50,
+    marginTop: 43,
     marginBottom: 16,
     padding: 16,
     borderRadius: 100,
