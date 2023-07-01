@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 
 import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScreen";
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
-import image from "./src/assets/images/app_background.jpg";
+import imageBackground from "./src/assets/images/app_background.jpg";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,9 +21,9 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <ImageBackground
-        source={image}
+        source={imageBackground}
         resizeMode="cover"
-        style={styles.image}
+        style={styles.imageBackground}
       ></ImageBackground>
       <RegistrationScreen />
       {/* <LoginScreen /> */}
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // justifyContent: "center",
   },
-  image: {
+  imageBackground: {
     flex: 1,
     justifyContent: "center",
   },
