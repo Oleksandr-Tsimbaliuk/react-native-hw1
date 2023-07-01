@@ -19,24 +19,20 @@ const RegistrationScreen = () => {
   };
   return (
     <View style={styles.registrationContainer}>
-      <View style={styles.userImageContainer}>
+      <View>
         {/* <Image source={{ uri: "" }}></Image> */}
         <Button onPress={handleAddUserImage} title="Add photo" />
         <Button onPress={handleRemoveUserImage} title="Remove photo" />
       </View>
 
-      <Text style={styles.registrationFormHeader}>Реєстрація</Text>
+      <Text>Реєстрація</Text>
 
-      <View style={styles.registrationForm}>
+      <View>
         <TextInput placeholder="Логін"></TextInput>
         <TextInput placeholder="Адреса електронної пошти"></TextInput>
         <TextInput placeholder="Пароль"></TextInput>
       </View>
-      <Text
-        onPress={handleFormSubmitButton}
-        style={styles.registrationFormSubmitButton}
-        title="Зареєструватися"
-      />
+      <Text onPress={handleFormSubmitButton} title="Зареєструватися" />
       <Text>Немає акаунту? Зареєструватися</Text>
     </View>
   );

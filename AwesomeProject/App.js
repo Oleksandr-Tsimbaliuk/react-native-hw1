@@ -18,7 +18,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.appContainer}>
       <RegistrationScreen />
       {/* <LoginScreen /> */}
       <StatusBar style="auto" />
@@ -27,10 +27,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
     backgroundColor: "#fdd",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
