@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 
 import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScreen";
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
-import imageBackground from "./src/assets/images/app_background.jpg";
+import imageBackground from "./src/assets/images/app_background.png";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -35,9 +35,7 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: "#fdd",
-    // alignItems: "center",
-    // justifyContent: "center",
+    backgroundColor: "#ffd",
   },
   imageBackground: {
     flex: 1,

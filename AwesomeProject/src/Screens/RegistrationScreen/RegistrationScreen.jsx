@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { Button, Image, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { styles } from "./StyledRegistrationScreen";
+import InputRegistration from "../../components/InputRegistration/InputRegistration";
 
 const RegistrationScreen = () => {
   const [userImage, setUserImage] = useState("");
@@ -19,21 +27,57 @@ const RegistrationScreen = () => {
   };
   return (
     <View style={styles.registrationContainer}>
-      <View>
+      <View style={styles.userImageContainer}>
         {/* <Image source={{ uri: "" }}></Image> */}
         <Button onPress={handleAddUserImage} title="Add photo" />
         <Button onPress={handleRemoveUserImage} title="Remove photo" />
       </View>
 
-      <Text>Реєстрація</Text>
-
-      <View>
-        <TextInput placeholder="Логін"></TextInput>
-        <TextInput placeholder="Адреса електронної пошти"></TextInput>
-        <TextInput placeholder="Пароль"></TextInput>
+      <View style={styles.registrationForm}>
+        <Text style={styles.registrationFormHeader}> Реєстрація</Text>
+        <InputRegistration
+          name={"login"}
+          type={"text"}
+          value={login}
+          placeholder="Логін"
+        ></InputRegistration>
+        <InputRegistration
+          name={"email"}
+          type={"email"}
+          value={email}
+          placeholder="Адреса електронної пошти"
+        ></InputRegistration>
+        <InputRegistration
+          name={"password"}
+          type={"password"}
+          value={password}
+          placeholder="Пароль"
+        ></InputRegistration>
       </View>
-      <Text onPress={handleFormSubmitButton} title="Зареєструватися" />
-      <Text>Немає акаунту? Зареєструватися</Text>
+      <TouchableOpacity
+        style={styles.registrationFormSubmitButton}
+        onPress={handleFormSubmitButton}
+        title="Зареєструватися"
+      >
+        <Text
+          style={{
+            fontSize: 16,
+            textAlign: "center",
+            color: "#ffffff",
+          }}
+        >
+          Зареєструватися
+        </Text>
+      </TouchableOpacity>
+      <Text
+        style={{
+          fontSize: 16,
+          textAlign: "center",
+          color: "#1B4371",
+        }}
+      >
+        Вже є акаунт? Увійти
+      </Text>
     </View>
   );
 };
