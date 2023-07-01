@@ -12,8 +12,8 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.registrationContainer}>
-      <View style={styles.registrationForm}>
+    <View style={styles.registrationForm}>
+      <View style={styles.registrationContainer}>
         <Text style={styles.loginFormHeader}>Увійти</Text>
 
         <InputRegistration

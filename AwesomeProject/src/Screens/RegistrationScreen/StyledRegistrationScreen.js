@@ -28,14 +28,11 @@ export const styles = StyleSheet.create({
   },
   registrationForm: {
     // display: "flex",
-    marginTop: 92,
     marginBottom: 40,
     gap: 16,
-    // top: -32,
   },
   registrationFormHeader: {
-    margin: 0,
-    padding: 0,
+    marginTop: 92,
     marginBottom: 32,
     fontFamily: "Roboto-Bold",
     fontWeight: 500,

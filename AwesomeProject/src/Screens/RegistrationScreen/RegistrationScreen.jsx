@@ -33,8 +33,8 @@ const RegistrationScreen = () => {
         <Button onPress={handleRemoveUserImage} title="Remove photo" />
       </View>
 
-      <View style={styles.registrationForm}>
         <Text style={styles.registrationFormHeader}> Реєстрація</Text>
+      <View style={styles.registrationForm}>
         <InputRegistration
           name={"login"}
           type={"text"}
