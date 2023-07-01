@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F6F6F6",
   },
   registrationForm: {
-    // display: "flex",
     marginTop: 32,
     gap: 16,
   },
