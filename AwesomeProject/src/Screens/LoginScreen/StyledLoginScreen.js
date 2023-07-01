@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
 
   loginForm: {
-    // display: "flex",
     marginTop: 32,
     gap: 16,
   },
