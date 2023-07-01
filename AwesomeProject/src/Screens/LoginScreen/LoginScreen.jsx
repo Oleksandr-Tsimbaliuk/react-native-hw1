@@ -1,18 +1,58 @@
-import React from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import { styles } from "../LoginScreen/StyledLoginScreen";
+import InputRegistration from "../../components/InputRegistration/InputRegistration";
 
 const LoginScreen = () => {
-  return (
-    <View>
-      <Text>Увійти</Text>
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(null);
 
-      <View>
-        <TextInput placeholder="Логін"></TextInput>
-        <TextInput placeholder="Адреса електронної пошти"></TextInput>
-        <TextInput placeholder="Пароль"></TextInput>
+  const handleFormSubmitButton = () => {
+    console.log(login, email, password);
+  };
+
+  return (
+    <View style={styles.registrationContainer}>
+      <View style={styles.registrationForm}>
+        <Text style={styles.loginFormHeader}>Увійти</Text>
+
+        <InputRegistration
+          name={"email"}
+          type={"email"}
+          value={email}
+          placeholder="Адреса електронної пошти"
+        ></InputRegistration>
+        <InputRegistration
+          name={"password"}
+          type={"password"}
+          value={password}
+          placeholder="Пароль"
+        ></InputRegistration>
       </View>
-      <Button title="Зареєструватися" />
-      <Text>Немає акаунту? Зареєструватися</Text>
+      <TouchableOpacity
+        style={styles.registrationFormSubmitButton}
+        onPress={handleFormSubmitButton}
+        title="Зареєструватися"
+      >
+        <Text
+          style={{
+            fontSize: 16,
+            textAlign: "center",
+            color: "#ffffff",
+          }}
+        >
+          Зареєструватися
+        </Text>
+      </TouchableOpacity>
+      <Text
+        style={{
+          fontSize: 16,
+          textAlign: "center",
+          color: "#1B4371",
+        }}
+      >
+        Немає акаунту? Зареєструватися
+      </Text>
     </View>
   );
 };
