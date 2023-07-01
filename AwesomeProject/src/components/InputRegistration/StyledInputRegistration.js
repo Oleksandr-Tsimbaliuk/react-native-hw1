@@ -1,17 +1,17 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  textInput: {
-    width: "100%",
-    height: 50,
+  input: {
     padding: 16,
+    height: 50,
+    width: "100%",
+    borderColor: "#E8E8E8",
     backgroundColor: "#F6F6F6",
-    borderStyle: "solid",
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: "#E8E8E8",
+    borderStyle: "solid",
   },
-  focusedTextInput: {
-    borderColor: "#FF6C00",
+  focusedInput: {
+    // borderColor: "#FF6C00",
   },
 });
