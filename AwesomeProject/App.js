@@ -1,10 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
 
 import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScreen";
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
+import Home from "./src/Screens/Home/Home";
+
 import imageBackground from "./src/assets/images/app_background.png";
+
+const MainStack = createStackNavigator(); // вказує на групу навігаторів
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,16 +26,18 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <ImageBackground
-        source={imageBackground}
-        resizeMode="cover"
-        style={styles.imageBackground}
-      ></ImageBackground>
-      {/* <RegistrationScreen /> */}
-      <LoginScreen />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <View style={styles.appContainer}>
+        <ImageBackground
+          source={imageBackground}
+          resizeMode="cover"
+          style={styles.imageBackground}
+        ></ImageBackground>
+        {/* <RegistrationScreen /> */}
+        <LoginScreen />
+        <StatusBar style="auto" />
+      </View>
+    </NavigationContainer>
   );
 }
 
