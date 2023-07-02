@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import {
   Text,
-  TextInput,
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  ImageBackground,
 } from "react-native";
 import { styles } from "../LoginScreen/StyledLoginScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
+import imageBackground from "../../../assets/images/app_background.png";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -21,51 +22,60 @@ const LoginScreen = () => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.loginContainer}>
-        <Text style={styles.loginFormHeader}>Увійти</Text>
-        <View style={styles.loginForm}>
-          <InputRegistration
-            name={"email"}
-            type={"email"}
-            value={email}
-            placeholder="Адреса електронної пошти"
-            onChangeText={setEmail}
-          ></InputRegistration>
-          <InputRegistration
-            name={"password"}
-            type={"password"}
-            value={password}
-            placeholder="Пароль"
-            onChangeText={setPassword}
-          ></InputRegistration>
-        </View>
-        <TouchableOpacity
-          style={styles.loginFormSubmitButton}
-          onPress={handleFormSubmitButton}
-          title="Зареєструватися"
-        >
+    <ImageBackground
+      source={imageBackground}
+      resizeMode="cover"
+      style={styles.imageBackground}
+    >
+    
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.loginContainer}>
+
+          <Text style={styles.loginFormHeader}>Увійти</Text>
+
+          <View style={styles.loginForm}>
+            <InputRegistration
+              name={"email"}
+              type={"email"}
+              value={email}
+              placeholder="Адреса електронної пошти"
+              onChangeText={setEmail}
+            ></InputRegistration>
+            <InputRegistration
+              name={"password"}
+              type={"password"}
+              value={password}
+              placeholder="Пароль"
+              onChangeText={setPassword}
+            ></InputRegistration>
+          </View>
+          <TouchableOpacity
+            style={styles.loginFormSubmitButton}
+            onPress={handleFormSubmitButton}
+            title="Зареєструватися"
+          >
+            <Text
+              style={{
+                fontSize: 16,
+                textAlign: "center",
+                color: "#ffffff",
+              }}
+            >
+              Увійти
+            </Text>
+          </TouchableOpacity>
           <Text
             style={{
               fontSize: 16,
               textAlign: "center",
-              color: "#ffffff",
+              color: "#1B4371",
             }}
           >
-            Увійти
+            Немає акаунту? Зареєструватися
           </Text>
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: "center",
-            color: "#1B4371",
-          }}
-        >
-          Немає акаунту? Зареєструватися
-        </Text>
-      </View>
-    </TouchableWithoutFeedback>
+        </View>
+      </TouchableWithoutFeedback>
+      </ImageBackground>
   );
 };
 
