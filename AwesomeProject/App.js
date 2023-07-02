@@ -9,7 +9,7 @@ import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScr
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
 import Home from "./src/Screens/Home/Home";
 
-import imageBackground from "./src/assets/images/app_background.png";
+import imageBackground from "./assets/app_background.png";
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
 
