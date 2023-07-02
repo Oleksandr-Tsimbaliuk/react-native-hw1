@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { styles } from "../LoginScreen/StyledLoginScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
 
