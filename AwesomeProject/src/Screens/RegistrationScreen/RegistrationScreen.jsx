@@ -10,12 +10,15 @@ import {
   Keyboard,
   ImageBackground,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "./StyledRegistrationScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
 import imageBackground from "../../../assets/images/app_background.png";
 
-const RegistrationScreen = ({ navigation }) => {
+const RegistrationScreen = () => {
+  const navigation = useNavigation();
+
   const [userImage, setUserImage] = useState("");
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -28,7 +31,7 @@ const RegistrationScreen = ({ navigation }) => {
   };
   const handleFormSubmitButton = () => {
     console.log(login, email, password);
-    navigation.navigate("Home")
+    navigation.navigate("Home");
   };
   return (
     <ImageBackground

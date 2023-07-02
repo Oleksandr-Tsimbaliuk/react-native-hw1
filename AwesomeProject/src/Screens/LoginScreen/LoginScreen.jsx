@@ -9,11 +9,15 @@ import {
   Keyboard,
   ImageBackground,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import { styles } from "../LoginScreen/StyledLoginScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
 import imageBackground from "../../../assets/images/app_background.png";
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
 
