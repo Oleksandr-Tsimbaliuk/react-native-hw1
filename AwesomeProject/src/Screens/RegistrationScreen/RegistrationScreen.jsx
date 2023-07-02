@@ -39,10 +39,12 @@ const RegistrationScreen = () => {
         </View>
 
         <Text style={styles.registrationFormHeader}> Реєстрація</Text>
-        <View style={styles.registrationForm}>
           <KeyboardAvoidingView
             behavior={Platform.OS == "ios" ? "padding" : "height"}
+            style={styles.container}
+            keyboardVerticalOffset={-255}
           >
+        <View style={styles.registrationForm}>
             <InputRegistration
               name={"login"}
               type={"text"}
@@ -64,8 +66,8 @@ const RegistrationScreen = () => {
               placeholder="Пароль"
               onChangeText={setPassword}
             ></InputRegistration>
-          </KeyboardAvoidingView>
         </View>
+          </KeyboardAvoidingView>
         <TouchableOpacity
           style={styles.registrationFormSubmitButton}
           onPress={handleFormSubmitButton}

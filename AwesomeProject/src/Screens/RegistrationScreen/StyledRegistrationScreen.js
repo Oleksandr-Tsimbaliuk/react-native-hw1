@@ -47,4 +47,8 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: "#FF6C00",
   },
+  // container: {
+  //   flex: 1,
+  //   justifyContent: "flex-end",
+  // },
 });
