@@ -15,10 +15,10 @@ const MainStack = createStackNavigator(); // вказує на групу нав
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Inter-Medium": require("./src/assets/fonts/Inter/static/Inter-Medium.ttf"),
-    "Roboto-Medium": require("./src/assets/fonts/Inter/static/Inter-Medium.ttf"),
-    "Roboto-Regular": require("./src/assets/fonts/Inter/static/Inter-Medium.ttf"),
-    "Roboto-Bold": require("./src/assets/fonts/Inter/static/Inter-Medium.ttf"),
+    "Inter-Medium": require("./assets/fonts/Inter/static/Inter-Medium.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Inter/static/Inter-Medium.ttf"),
+    "Roboto-Regular": require("./assets/fonts/Inter/static/Inter-Medium.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Inter/static/Inter-Medium.ttf"),
   });
 
   if (!fontsLoaded) {
