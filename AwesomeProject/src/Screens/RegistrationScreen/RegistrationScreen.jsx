@@ -13,9 +13,9 @@ import {
 
 import { styles } from "./StyledRegistrationScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
-import imageBackground from '../../../assets/images/app_background.png'
+import imageBackground from "../../../assets/images/app_background.png";
 
-const RegistrationScreen = () => {
+const RegistrationScreen = ({ navigation }) => {
   const [userImage, setUserImage] = useState("");
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +28,7 @@ const RegistrationScreen = () => {
   };
   const handleFormSubmitButton = () => {
     console.log(login, email, password);
+    navigation.navigate("Home")
   };
   return (
     <ImageBackground
@@ -37,7 +38,6 @@ const RegistrationScreen = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.registrationContainer}>
-          
           <View style={styles.userImageContainer}>
             {/* <Image source={{ uri: "" }}></Image> */}
             <Button onPress={handleAddUserImage} title="Add photo" />
@@ -95,6 +95,7 @@ const RegistrationScreen = () => {
               textAlign: "center",
               color: "#1B4371",
             }}
+            onPress={() => navigation.navigate("Login")}
           >
             Вже є акаунт? Увійти
           </Text>

@@ -13,12 +13,13 @@ import { styles } from "../LoginScreen/StyledLoginScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
 import imageBackground from "../../../assets/images/app_background.png";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
 
   const handleFormSubmitButton = () => {
     console.log(email, password);
+    navigation.navigate("Home");
   };
 
   return (
@@ -27,10 +28,8 @@ const LoginScreen = () => {
       resizeMode="cover"
       style={styles.imageBackground}
     >
-    
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.loginContainer}>
-
           <Text style={styles.loginFormHeader}>Увійти</Text>
 
           <View style={styles.loginForm}>
@@ -70,12 +69,13 @@ const LoginScreen = () => {
               textAlign: "center",
               color: "#1B4371",
             }}
+            onPress={() => navigation.navigate("Registration")}
           >
             Немає акаунту? Зареєструватися
           </Text>
         </View>
       </TouchableWithoutFeedback>
-      </ImageBackground>
+    </ImageBackground>
   );
 };
 

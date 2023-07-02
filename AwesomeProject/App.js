@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 import "react-native-gesture-handler";
 
 import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScreen";
@@ -25,8 +26,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      {/* <RegistrationScreen /> */}
-      <LoginScreen />
+      <MainStack.Navigator initialRouteName="Login">
+        <MainStack.Screen name="Registration" component={RegistrationScreen} />
+        <MainStack.Screen name="Home" component={Home} />
+        <MainStack.Screen name="Login" component={LoginScreen} />
+        {/* <RegistrationScreen /> */}
+        {/* <LoginScreen /> */}
+      </MainStack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
   );
