@@ -12,6 +12,6 @@ export const styles = StyleSheet.create({
     borderStyle: "solid",
   },
   focusedInput: {
-    // borderColor: "#FF6C00",
+    borderColor: "#FF6C00",
   },
 });

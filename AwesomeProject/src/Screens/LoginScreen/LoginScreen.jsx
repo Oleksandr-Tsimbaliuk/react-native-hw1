@@ -17,51 +17,55 @@ const LoginScreen = () => {
   const [password, setPassword] = useState(null);
 
   const handleFormSubmitButton = () => {
-    console.log(login, email, password);
+    console.log(email, password);
   };
 
   return (
-    <View style={styles.loginContainer}>
-      <Text style={styles.loginFormHeader}>Увійти</Text>
-      <View style={styles.loginForm}>
-        <InputRegistration
-          name={"email"}
-          type={"email"}
-          value={email}
-          placeholder="Адреса електронної пошти"
-        ></InputRegistration>
-        <InputRegistration
-          name={"password"}
-          type={"password"}
-          value={password}
-          placeholder="Пароль"
-        ></InputRegistration>
-      </View>
-      <TouchableOpacity
-        style={styles.loginFormSubmitButton}
-        onPress={handleFormSubmitButton}
-        title="Зареєструватися"
-      >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginFormHeader}>Увійти</Text>
+        <View style={styles.loginForm}>
+          <InputRegistration
+            name={"email"}
+            type={"email"}
+            value={email}
+            placeholder="Адреса електронної пошти"
+            onChangeText={setEmail}
+          ></InputRegistration>
+          <InputRegistration
+            name={"password"}
+            type={"password"}
+            value={password}
+            placeholder="Пароль"
+            onChangeText={setPassword}
+          ></InputRegistration>
+        </View>
+        <TouchableOpacity
+          style={styles.loginFormSubmitButton}
+          onPress={handleFormSubmitButton}
+          title="Зареєструватися"
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              textAlign: "center",
+              color: "#ffffff",
+            }}
+          >
+            Увійти
+          </Text>
+        </TouchableOpacity>
         <Text
           style={{
             fontSize: 16,
             textAlign: "center",
-            color: "#ffffff",
+            color: "#1B4371",
           }}
         >
-          Увійти
+          Немає акаунту? Зареєструватися
         </Text>
-      </TouchableOpacity>
-      <Text
-        style={{
-          fontSize: 16,
-          textAlign: "center",
-          color: "#1B4371",
-        }}
-      >
-        Немає акаунту? Зареєструватися
-      </Text>
-    </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
