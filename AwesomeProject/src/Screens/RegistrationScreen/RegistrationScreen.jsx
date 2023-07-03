@@ -10,10 +10,13 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  ImageBackground,
 } from "react-native";
 
 import { styles } from "./StyledRegistrationScreen";
 import InputRegistration from "../../components/InputRegistration/InputRegistration";
+import imageBackground from "../../../assets/images/app_background.png";
+
 
 const RegistrationScreen = () => {
   const [userImage, setUserImage] = useState("");
@@ -30,6 +33,11 @@ const RegistrationScreen = () => {
     console.log(login, email, password);
   };
   return (
+    <ImageBackground
+      source={imageBackground}
+      resizeMode="cover"
+      style={styles.imageBackground}
+    >
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.registrationContainer}>
         <View style={styles.userImageContainer}>
@@ -94,6 +102,7 @@ const RegistrationScreen = () => {
         </Text>
       </View>
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 };
 
