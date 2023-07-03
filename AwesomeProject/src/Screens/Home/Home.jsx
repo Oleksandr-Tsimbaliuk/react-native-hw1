@@ -12,11 +12,16 @@ import { useNavigation, useRoute } from "@react-navigation/core";
 const Home = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const Tabs = createBottomTabNavigator();
 
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <Tabs.Navigator>
+
+      
+    </Tabs.Navigator>
+    // <View style={styles.container}>
+    //   <Text>Home</Text>
+    // </View>
   );
 };
 
