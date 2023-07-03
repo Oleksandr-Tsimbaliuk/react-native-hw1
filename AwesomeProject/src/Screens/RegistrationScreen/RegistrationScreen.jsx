@@ -25,11 +25,15 @@ const RegistrationScreen = () => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
-  const [showPassword, setShowPassword] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleAddUserImage = {};
   const handleRemoveUserImage = () => {
     setUserImage(null);
+  };
+
+  const handleTogglePasswordShow = () => {
+    setShowPassword(!showPassword);
   };
   const handleFormSubmitButton = () => {
     console.log(login, email, password);
@@ -70,13 +74,22 @@ const RegistrationScreen = () => {
                 placeholder="Адреса електронної пошти"
                 onChangeText={setEmail}
               ></InputRegistration>
-              <InputRegistration
-                name={"password"}
-                type={"password"}
-                value={password}
-                placeholder="Пароль"
-                onChangeText={setPassword}
-              ></InputRegistration>
+              <View>
+                <InputRegistration
+                  name={"password"}
+                  type={"password"}
+                  value={password}
+                  placeholder="Пароль"
+                  onChangeText={setPassword}
+                  secureTextEntry={!showPassword}
+                ></InputRegistration>
+                <TouchableOpacity
+                  style={{ position: "absolute", right: 13, top: 13 }}
+                  onPress={handleTogglePasswordShow}
+                >
+                  <Text>{showPassword ? "Приховати" : "Показати"}</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </KeyboardAvoidingView>
           <TouchableOpacity
