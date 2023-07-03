@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -9,8 +9,7 @@ import "react-native-gesture-handler";
 import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScreen";
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
 import Home from "./src/Screens/Home/Home";
-
-const MainStack = createStackNavigator(); // вказує на групу навігаторів
+import PostsScreen from "./src/Screens/PostsScreen/PostsScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,14 +23,37 @@ export default function App() {
     return null;
   }
 
+  const MainStack = createStackNavigator();
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Login">
-        <MainStack.Screen name="Registration" component={RegistrationScreen} />
-        <MainStack.Screen name="Home" component={Home} />
-        <MainStack.Screen name="Login" component={LoginScreen} />
-        {/* <RegistrationScreen /> */}
-        {/* <LoginScreen /> */}
+        <MainStack.Screen
+          name="Registration"
+          component={RegistrationScreen}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        {/* <MainStack.Screen
+          name="Posts"
+          component={PostsScreen}
+          options={{
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Press me"
+              />
+            ),
+          }}
+        /> */}
       </MainStack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
