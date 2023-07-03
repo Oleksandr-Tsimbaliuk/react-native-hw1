@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Text, View } from "react-native";
 
 const ProfileScreen = () => {
-  return (
-    <div>ProfileScreen</div>
-  )
-}
+  return <Text>ProfileScreen</Text>;
+};
 
-export default ProfileScreen
+export default ProfileScreen;
