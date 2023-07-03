@@ -20,10 +20,15 @@ const LoginScreen = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleFormSubmitButton = () => {
     console.log(email, password);
     navigation.navigate("Home");
+  };
+
+  const handleTogglePasswordShow = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -44,13 +49,22 @@ const LoginScreen = () => {
               placeholder="Адреса електронної пошти"
               onChangeText={setEmail}
             ></InputRegistration>
-            <InputRegistration
-              name={"password"}
-              type={"password"}
-              value={password}
-              placeholder="Пароль"
-              onChangeText={setPassword}
-            ></InputRegistration>
+            <View>
+              <InputRegistration
+                name={"password"}
+                type={"password"}
+                value={password}
+                placeholder="Пароль"
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+              ></InputRegistration>
+              <TouchableOpacity
+                style={{ position: "absolute", top: 13, right: 13 }}
+                onPress={handleTogglePasswordShow}
+              >
+                <Text>{showPassword ? "Приховати" : "Показати"}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
           <TouchableOpacity
             style={styles.loginFormSubmitButton}
