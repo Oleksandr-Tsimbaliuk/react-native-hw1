@@ -55,6 +55,7 @@ const Home = () => {
 
             // color={"#212121CC"}
           ),
+          tabBarLabel: "",
         }}
       />
       <Tabs.Screen
@@ -85,6 +86,7 @@ const Home = () => {
             </TouchableOpacity>
             // color={"#212121CC"}
           ),
+          tabBarLabel: "",
         }}
       />
       <Tabs.Screen
@@ -115,6 +117,7 @@ const Home = () => {
               color={focused ? "#212121CC" : "#BDBDBD"}
             />
           ),
+          tabBarLabel: "",
         }}
       />
     </Tabs.Navigator>
