@@ -14,6 +14,7 @@ import { useNavigation, useRoute } from "@react-navigation/core";
 import CreatePostsScreen from "../CreatePostsScreen/CreatePostsScreen";
 import PostsScreen from "../PostsScreen/PostsScreen";
 import ProfileScreen from "../ProfileScreen/ProfileScreen";
+import { Feather, Ionicons } from "@expo/vector-icons";
 
 const Tabs = createBottomTabNavigator();
 
@@ -32,15 +33,28 @@ const Home = () => {
             <TouchableOpacity
               style={styles.logOutButton}
               onPress={() => navigation.navigate("Login")}
-              Title={"Return to login"}
             >
-              <Text>Login</Text>
-              {/* <Ionicons name="arrow-back-outline" size={24} color="#212121" /> */}
+              <Ionicons
+                name="log-out-outline"
+                size={30}
+                color="#BDBDBD"
+                style={{ marginRight: 16 }}
+                // onPress={() => navigation.goBack()}
+              />
             </TouchableOpacity>
           ),
-          // tabBarIcon: ({ color }) => (
-          //   <Ionicons name="add" size={24} color={color} />
-          // ),
+          tabBarIcon: ({ focused, color }) => (
+            // <TouchableOpacity
+            //   onPress={() => navigation.navigate("PostsScreen")}
+            // > </TouchableOpacity>
+            <Ionicons
+              name="grid-outline"
+              size={24}
+              color={focused ? "#212121CC" : "#BDBDBD"}
+            />
+
+            // color={"#212121CC"}
+          ),
         }}
       />
       <Tabs.Screen
@@ -54,15 +68,23 @@ const Home = () => {
             <TouchableOpacity
               style={styles.arrowButton}
               onPress={() => navigation.navigate("PostsScreen")}
-              Title={"Return to home"}
             >
               <Text>Home</Text>
               {/* <Ionicons name="log-out-outline" size={24} color="#BDBDBD" /> */}
             </TouchableOpacity>
           ),
-          // tabBarIcon: ({ color }) => (
-          //   <Feather name="user" size={24} color={color} />
-          // ),
+          tabBarIcon: ({ focused, color }) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("CreatePostsScreen")}
+            >
+              <Ionicons
+                name="add"
+                size={24}
+                color={focused ? "#212121CC" : "#BDBDBD"}
+              />
+            </TouchableOpacity>
+            // color={"#212121CC"}
+          ),
         }}
       />
       <Tabs.Screen
@@ -71,18 +93,28 @@ const Home = () => {
         options={{
           headerTitle: "",
           headerRight: () => (
-            <TouchableOpacity
-              style={styles.logOutButton}
-              onPress={() => navigation.navigate("Login")}
-              Title={"Return to login"}
-            >
-              <Text>Login</Text>
-              {/* <Ionicons name="log-out-outline" size={24} color="#BDBDBD" /> */}
-            </TouchableOpacity>
+            // <TouchableOpacity
+            //   style={styles.logOutButton}
+            //   onPress={() => navigation.navigate("Login")}
+            // ></TouchableOpacity>
+            <Ionicons
+              name="log-out-outline"
+              size={30}
+              color="#BDBDBD"
+              style={{ marginRight: 16 }}
+              // onPress={() => navigation.goBack()}
+            />
           ),
-          // tabBarIcon: ({ color }) => (
-          //   <Feather name="user" size={24} color={color} />
-          // ),
+          tabBarIcon: ({ focused, color }) => (
+            // <TouchableOpacity
+            //   onPress={() => navigation.navigate("CreatePostsScreen")}
+            //   ></TouchableOpacity>
+            <Feather
+              name="user"
+              size={24}
+              color={focused ? "#212121CC" : "#BDBDBD"}
+            />
+          ),
         }}
       />
     </Tabs.Navigator>
