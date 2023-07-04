@@ -40,12 +40,12 @@ const RegistrationScreen = () => {
     navigation.navigate("Home");
   };
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <ImageBackground
       source={imageBackground}
       resizeMode="cover"
       style={styles.imageBackground}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.registrationContainer}>
           <View style={styles.userImageContainer}>
             {/* <Image source={{ uri: "" }}></Image> */}
@@ -118,8 +118,8 @@ const RegistrationScreen = () => {
             Вже є акаунт? Увійти
           </Text>
         </View>
-      </TouchableWithoutFeedback>
     </ImageBackground>
+      </TouchableWithoutFeedback>
   );
 };
 
