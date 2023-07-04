@@ -69,9 +69,16 @@ const Home = () => {
             <TouchableOpacity
               style={styles.arrowButton}
               onPress={() => navigation.navigate("PostsScreen")}
+              // onPress={() =>
+              //   navigation.navigate("Home", {
+              //     screen: `${route.params.screen}`,
+              //     params: {
+              //       user: route.params.params.user,
+              //     },
+              //   })
+              // }
             >
-              <Text>Home</Text>
-              {/* <Ionicons name="log-out-outline" size={24} color="#BDBDBD" /> */}
+              <Ionicons name="arrow-back-outline" size={24} color="#BDBDBD" />
             </TouchableOpacity>
           ),
           tabBarIcon: ({ focused, color }) => (
