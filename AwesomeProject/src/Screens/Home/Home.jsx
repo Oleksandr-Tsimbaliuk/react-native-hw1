@@ -95,17 +95,18 @@ const Home = () => {
         options={{
           headerTitle: "",
           headerRight: () => (
-            // <TouchableOpacity
-            //   style={styles.logOutButton}
-            //   onPress={() => navigation.navigate("Login")}
-            // ></TouchableOpacity>
-            <Ionicons
-              name="log-out-outline"
-              size={30}
-              color="#BDBDBD"
-              style={{ marginRight: 16 }}
-              // onPress={() => navigation.goBack()}
-            />
+            <TouchableOpacity
+              style={styles.logOutButton}
+              onPress={() => navigation.navigate("Login")}
+            >
+              <Ionicons
+                name="log-out-outline"
+                size={30}
+                color="#BDBDBD"
+                style={{ marginRight: 16 }}
+                // onPress={() => navigation.goBack()}
+              />
+            </TouchableOpacity>
           ),
           tabBarIcon: ({ focused, color }) => (
             // <TouchableOpacity
@@ -121,9 +122,6 @@ const Home = () => {
         }}
       />
     </Tabs.Navigator>
-    // <View style={styles.container}>
-    //   <Text>Home</Text>
-    // </View>
   );
 };
 
