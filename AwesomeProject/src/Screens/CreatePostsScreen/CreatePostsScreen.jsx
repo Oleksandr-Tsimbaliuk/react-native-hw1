@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { Camera } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
@@ -5,6 +6,18 @@ import { Ionicons } from "@expo/vector-icons";
 // import { TextInput } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import * as Location from "expo-location";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback,
+  Image,
+  Alert,
+} from "react-native";
 
 const CreatePostsScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -13,7 +26,7 @@ const CreatePostsScreen = () => {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       await MediaLibrary.requestPermissionsAsync();
 
       setHasPermission(status === "granted");
@@ -42,8 +55,7 @@ const CreatePostsScreen = () => {
             }}
           >
             <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
-              {" "}
-              Flip{" "}
+              Flip
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -84,19 +96,21 @@ const styles = StyleSheet.create({
   takePhotoOut: {
     borderWidth: 2,
     borderColor: "white",
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 50,
+
+    bottom: 15,
   },
 
   takePhotoInner: {
     borderWidth: 2,
     borderColor: "white",
-    height: 40,
-    width: 40,
+    height: 50,
+    width: 50,
     backgroundColor: "white",
     borderRadius: 50,
   },
