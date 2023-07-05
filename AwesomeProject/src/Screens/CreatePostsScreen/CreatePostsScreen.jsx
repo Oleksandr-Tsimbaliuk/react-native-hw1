@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
 
   flipContainer: {
-    flex: 0.1,
+    // flex: 0.1,
     alignSelf: "flex-end",
   },
 
