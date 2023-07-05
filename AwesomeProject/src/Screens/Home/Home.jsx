@@ -82,15 +82,15 @@ const Home = () => {
             </TouchableOpacity>
           ),
           tabBarIcon: ({ focused, color }) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("CreatePostsScreen")}
-            >
-              <Ionicons
-                name="add"
-                size={24}
-                color={focused ? "#212121CC" : "#BDBDBD"}
-              />
-            </TouchableOpacity>
+            // <TouchableOpacity
+            //   onPress={() => navigation.navigate("CreatePostsScreen")}
+            // ></TouchableOpacity>
+            <Ionicons
+              name="add"
+              size={24}
+              color={focused ? "#212121CC" : "#BDBDBD"}
+            />
+
             // color={"#212121CC"}
           ),
           tabBarLabel: "",
