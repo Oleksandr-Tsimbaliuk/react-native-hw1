@@ -45,20 +45,6 @@ const CreatePostsScreen = () => {
       <Camera style={styles.camera} type={type} ref={setCameraRef}>
         <View style={styles.photoView}>
           <TouchableOpacity
-            style={styles.flipContainer}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}
-          >
-            <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
-              Flip
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
             style={styles.button}
             onPress={async () => {
               if (cameraRef) {
@@ -79,19 +65,27 @@ const CreatePostsScreen = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  camera: { flex: 1 },
+  camera: {
+    // flex: 1,
+    top: 32,
+    left: 16,
+    height: 267,
+    width: 343,
+  },
   photoView: {
     flex: 1,
     backgroundColor: "transparent",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
+    // paddingTop: 95,
   },
 
-  flipContainer: {
-    // flex: 0.1,
-    alignSelf: "flex-end",
+  button: {
+    // display: "flex",
+    // alignSelf: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
-
-  button: { alignSelf: "center" },
 
   takePhotoOut: {
     borderWidth: 2,
@@ -102,8 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 50,
-
-    bottom: 15,
   },
 
   takePhotoInner: {
