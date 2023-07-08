@@ -24,18 +24,18 @@ const CreatePostsScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  const [isMakingPhoto, setIsMakingPhoto] = useState(true);
+  // const [isMakingPhoto, setIsMakingPhoto] = useState(true);
   const [inputTitle, setInputTitle] = useState("");
   const [photo, setPhoto] = useState("");
-  const [post, setPost] = useState({
-    title: "",
-    location: {},
-    comments: [],
-    photo: {
-      uri: "",
-    },
-    country: "",
-  });
+  // const [post, setPost] = useState({
+  //   title: "",
+  //   location: {},
+  //   comments: [],
+  //   photo: {
+  //     uri: "",
+  //   },
+  //   country: "",
+  // });
 
   useEffect(() => {
     (async () => {
@@ -73,7 +73,7 @@ const CreatePostsScreen = () => {
 
     if (!result.canceled) {
       setPhoto(result.assets[0].uri);
-      setIsMakingPhoto(true);
+      // setIsMakingPhoto(true);
       // const selectedAsset = result.assets[0];
       // setPost((prevPost) => ({
       //   ...prevPost,
