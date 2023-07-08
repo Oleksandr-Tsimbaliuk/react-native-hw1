@@ -25,6 +25,8 @@ const CreatePostsScreen = () => {
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [isMakingPhoto, setIsMakingPhoto] = useState(true);
+  const [inputTitle, setInputTitle] = useState("");
+  const [photo, setPhoto] = useState("");
   const [post, setPost] = useState({
     title: "",
     location: {},
@@ -35,42 +37,10 @@ const CreatePostsScreen = () => {
     country: "",
   });
 
-  const handleInputTitle = (text) => {
-    setPost((prevPost) => ({
-      ...prevPost,
-      title: text,
-    }));
-  };
-
-  const handleAddPhoto = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== "granted") return;
-    const options = {
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    };
-
-    let result = await ImagePicker.launchImageLibraryAsync(options);
-
-    if (!result.canceled) {
-      const selectedAsset = result.assets[0];
-      setPost((prevPost) => ({
-        ...prevPost,
-        photo: {
-          uri: selectedAsset.uri,
-        },
-      }));
-      setIsMakingPhoto(true);
-    }
-  };
-
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       await MediaLibrary.requestPermissionsAsync();
-
       setHasPermission(status === "granted");
     })();
   }, []);
@@ -82,32 +52,63 @@ const CreatePostsScreen = () => {
     return <Text>No access to camera</Text>;
   }
 
+  const makeFoto = async () => {
+    if (cameraRef.current) {
+      const { uri } = await cameraRef.current.takePictureAsync();
+      await MediaLibrary.createAssetAsync(uri);
+    }
+  };
+
+  const handleAddPhoto = async () => {
+    // const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    // if (status !== "granted") return;
+    let result = await ImagePicker.launchImageLibraryAsync(options);
+
+    const options = {
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    };
+
+    if (!result.canceled) {
+      setPhoto(result.assets[0].uri);
+      setIsMakingPhoto(true);
+      // const selectedAsset = result.assets[0];
+      // setPost((prevPost) => ({
+      //   ...prevPost,
+      //   photo: {
+      //     uri: selectedAsset.uri,
+      //   },
+      // }));
+    }
+  };
+
+  // const handleNavigateToPosts = () => {
+  //   navigation.navigate("PostsScreen");
+  // };
+
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type} ref={setCameraRef}>
         <View style={styles.photoView}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={async () => {
-              if (cameraRef) {
-                const { uri } = await cameraRef.takePictureAsync();
-                await MediaLibrary.createAssetAsync(uri);
-              }
-            }}
-          >
-            <View style={styles.takePhotoOut}>
+          <TouchableOpacity style={styles.button} onPress={makeFoto}>
+            <View
+              style={[
+                styles.takePhotoOut,
+                { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
+              ]}
+            >
               <Ionicons
-                ы
                 name="camera-outline"
                 size={24}
-                color="#FFF"
+                color={photo ? "#FFF" : "#BDBDBD"}
               ></Ionicons>
-              {/* <View style={styles.takePhotoInner}></View> */}
             </View>
           </TouchableOpacity>
         </View>
       </Camera>
-      
+
       <TouchableOpacity onPress={handleAddPhoto}>
         {isMakingPhoto ? (
           <Text style={styles.title}>Завантажте фото</Text>
@@ -117,9 +118,11 @@ const CreatePostsScreen = () => {
       </TouchableOpacity>
 
       <TextInput
-        placeholder="Назва"
-        value={post.title}
-        onChangeText={handleInputTitle}
+        placeholder="Назва..."
+        type={"text"}
+        name={"photo"}
+        value={inputTitle}
+        onChangeText={setInputTitle}
       ></TextInput>
     </View>
   );
@@ -155,9 +158,9 @@ const styles = StyleSheet.create({
   },
 
   takePhotoOut: {
+    // backgroundColor: "#FFFFFF",
     // borderWidth: 2,
     // borderColor: "white",
-    backgroundColor: "#FFFFFF4D",
 
     height: 60,
     width: 60,
@@ -185,3 +188,10 @@ const styles = StyleSheet.create({
 });
 
 export default CreatePostsScreen;
+
+// const handleInputTitle = (text) => {
+//   setPost((prevPost) => ({
+//     ...prevPost,
+//     title: text,
+//   }));
+// };
