@@ -18,6 +18,7 @@ import {
   Image,
   Alert,
   TextInput,
+  ImageBackground,
 } from "react-native";
 
 const CreatePostsScreen = () => {
@@ -53,13 +54,13 @@ const CreatePostsScreen = () => {
   }
 
   const makePhoto = async () => {
+    if (photo) {
+      return setPhoto(null);
+    }
     if (cameraRef) {
       const { uri } = await cameraRef.takePictureAsync();
       await MediaLibrary.createAssetAsync(uri);
       setPhoto(uri);
-      console.log(uri);
-      console.log(photo);
-      // console.log(result)
     }
   };
 
@@ -92,22 +93,26 @@ const CreatePostsScreen = () => {
   // const handleNavigateToPosts = () => {
   //   navigation.navigate("PostsScreen");
   // };
-  const makeOrLoadPhoto = () => {
-    if (condition) {
-    }
-  };
 
   return (
     <View style={styles.container}>
       {photo ? (
-        <Image
-          source={{ uri: photo }}
-          style={{
-            width: "100%",
-            height: 240,
-            borderRadius: 8,
-          }}
-        ></Image>
+        <ImageBackground source={{ uri: photo }} style={styles.previewPhoto}>
+          <TouchableOpacity style={styles.button} onPress={makePhoto}>
+            <View
+              style={[
+                styles.takePhotoOut,
+                { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
+              ]}
+            >
+              <Ionicons
+                name="camera-outline"
+                size={24}
+                color={photo ? "#FFF" : "#BDBDBD"}
+              ></Ionicons>
+            </View>
+          </TouchableOpacity>
+        </ImageBackground>
       ) : (
         <Camera style={styles.camera} type={type} ref={setCameraRef}>
           <View style={styles.photoView}>
@@ -131,7 +136,7 @@ const CreatePostsScreen = () => {
 
       <TouchableOpacity onPress={handleAddPhoto}>
         {photo ? (
-          <Text style={styles.title}>Редагувати фото</Text>
+          <Text style={styles.title}>Завантажити інше фото</Text>
         ) : (
           <Text style={styles.title}>Завантажте фото</Text>
         )}
@@ -144,7 +149,7 @@ const CreatePostsScreen = () => {
         name="photo"
         value={inputTitle}
         onChangeText={setInputTitle}
-      ></TextInput>
+      />
     </View>
   );
 };
@@ -155,20 +160,28 @@ const styles = StyleSheet.create({
     // flex: 1,
     // top: 32,
     // left: 16,
-    height: 267,
-    width: 343,
-    borderRadius: 30,
+
+    borderRadius: 8,
     overflow: "hidden",
   },
   photoView: {
-    flex: 1,
     backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
-    height: 267,
+    height: 240,
     width: 343,
     // borderRadius: 30,
     // paddingTop: 95,
+  },
+  previewPhoto: {
+    // flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // width: "100%",
+    height: 240,
+    width: 343,
+    borderRadius: 8,
+    overflow: "hidden",
   },
 
   button: {
