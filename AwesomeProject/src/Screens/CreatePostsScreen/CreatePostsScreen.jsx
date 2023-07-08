@@ -26,7 +26,7 @@ const CreatePostsScreen = () => {
   const [type, setType] = useState(Camera.Constants.Type.back);
   // const [isMakingPhoto, setIsMakingPhoto] = useState(true);
   const [inputTitle, setInputTitle] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   // const [post, setPost] = useState({
   //   title: "",
   //   location: {},
@@ -52,16 +52,21 @@ const CreatePostsScreen = () => {
     return <Text>No access to camera</Text>;
   }
 
-  const makeFoto = async () => {
-    if (cameraRef.current) {
-      const { uri } = await cameraRef.current.takePictureAsync();
+  const makePhoto = async () => {
+    if (cameraRef) {
+      const { uri } = await cameraRef.takePictureAsync();
       await MediaLibrary.createAssetAsync(uri);
+      setPhoto(uri);
+      console.log(uri);
+      console.log(photo);
+      // console.log(result)
     }
   };
 
   const handleAddPhoto = async () => {
-    // const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    // if (status !== "granted") return;
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") return;
+
     let result = await ImagePicker.launchImageLibraryAsync(options);
 
     const options = {
@@ -87,40 +92,56 @@ const CreatePostsScreen = () => {
   // const handleNavigateToPosts = () => {
   //   navigation.navigate("PostsScreen");
   // };
+  const makeOrLoadPhoto = () => {
+    if (condition) {
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type} ref={setCameraRef}>
-        <View style={styles.photoView}>
-          <TouchableOpacity style={styles.button} onPress={makeFoto}>
-            <View
-              style={[
-                styles.takePhotoOut,
-                { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
-              ]}
-            >
-              <Ionicons
-                name="camera-outline"
-                size={24}
-                color={photo ? "#FFF" : "#BDBDBD"}
-              ></Ionicons>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </Camera>
+      {photo ? (
+        <Image
+          source={{ uri: photo }}
+          style={{
+            width: "100%",
+            height: 240,
+            borderRadius: 8,
+          }}
+        ></Image>
+      ) : (
+        <Camera style={styles.camera} type={type} ref={setCameraRef}>
+          <View style={styles.photoView}>
+            <TouchableOpacity style={styles.button} onPress={makePhoto}>
+              <View
+                style={[
+                  styles.takePhotoOut,
+                  { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
+                ]}
+              >
+                <Ionicons
+                  name="camera-outline"
+                  size={24}
+                  color={photo ? "#FFF" : "#BDBDBD"}
+                ></Ionicons>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </Camera>
+      )}
 
       <TouchableOpacity onPress={handleAddPhoto}>
-        {isMakingPhoto ? (
-          <Text style={styles.title}>Завантажте фото</Text>
-        ) : (
+        {photo ? (
           <Text style={styles.title}>Редагувати фото</Text>
+        ) : (
+          <Text style={styles.title}>Завантажте фото</Text>
         )}
       </TouchableOpacity>
 
       <TextInput
         placeholder="Назва..."
-        type={"text"}
-        name={"photo"}
+        type="text"
+        required
+        name="photo"
         value={inputTitle}
         onChangeText={setInputTitle}
       ></TextInput>
