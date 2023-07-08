@@ -54,7 +54,13 @@ const CreatePostsScreen = () => {
             }}
           >
             <View style={styles.takePhotoOut}>
-              <View style={styles.takePhotoInner}></View>
+              <Ionicons
+                ы
+                name="camera-outline"
+                size={24}
+                color="#FFF"
+              ></Ionicons>
+              {/* <View style={styles.takePhotoInner}></View> */}
             </View>
           </TouchableOpacity>
         </View>
@@ -88,8 +94,10 @@ const styles = StyleSheet.create({
   },
 
   takePhotoOut: {
-    borderWidth: 2,
-    borderColor: "white",
+    // borderWidth: 2,
+    // borderColor: "white",
+    backgroundColor: "#FFFFFF4D",
+
     height: 60,
     width: 60,
     display: "flex",
