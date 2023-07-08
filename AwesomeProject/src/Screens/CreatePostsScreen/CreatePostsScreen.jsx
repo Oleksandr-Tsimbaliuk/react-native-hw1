@@ -17,12 +17,47 @@ import {
   TouchableWithoutFeedback,
   Image,
   Alert,
+  TextInput,
 } from "react-native";
 
 const CreatePostsScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [isMakingPhoto, setIsMakingPhoto] = useState(true);
+  const [post, setPost] = useState({
+    title: "",
+    location: {},
+    comments: [],
+    photo: {
+      uri: "",
+    },
+    country: "",
+  });
+
+  const handleAddPhoto = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") return;
+    const options = {
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    };
+
+    let result = await ImagePicker.launchImageLibraryAsync(options);
+
+    if (!result.canceled) {
+      const selectedAsset = result.assets[0];
+      setPost((prevPost) => ({
+        ...prevPost,
+        photo: {
+          uri: selectedAsset.uri,
+        },
+      }));
+      setIsMakingPhoto(true);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -65,24 +100,38 @@ const CreatePostsScreen = () => {
           </TouchableOpacity>
         </View>
       </Camera>
+      <TouchableOpacity onPress={handleAddPhoto}>
+        {isMakingPhoto ? (
+          <Text style={styles.title}>Завантажте фото</Text>
+        ) : (
+          <Text style={styles.title}>Редагувати фото</Text>
+        )}
+      </TouchableOpacity>
+
+      <TextInput placeholder="Назва" value={post.title}></TextInput>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { paddingHorizontal: 16, paddingBottom: 80, paddingTop: 32 },
   camera: {
     // flex: 1,
-    top: 32,
-    left: 16,
+    // top: 32,
+    // left: 16,
     height: 267,
     width: 343,
+    borderRadius: 30,
+    overflow: "hidden",
   },
   photoView: {
     flex: 1,
     backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
+    height: 267,
+    width: 343,
+    // borderRadius: 30,
     // paddingTop: 95,
   },
 
@@ -113,6 +162,13 @@ const styles = StyleSheet.create({
     width: 50,
     backgroundColor: "white",
     borderRadius: 50,
+  },
+  title: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#BDBDBD",
+    marginTop: 8,
   },
 });
 
