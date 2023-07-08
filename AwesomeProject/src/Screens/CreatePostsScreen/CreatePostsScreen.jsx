@@ -35,6 +35,13 @@ const CreatePostsScreen = () => {
     country: "",
   });
 
+  const handleInputTitle = (text) => {
+    setPost((prevPost) => ({
+      ...prevPost,
+      title: text,
+    }));
+  };
+
   const handleAddPhoto = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") return;
@@ -100,6 +107,7 @@ const CreatePostsScreen = () => {
           </TouchableOpacity>
         </View>
       </Camera>
+      
       <TouchableOpacity onPress={handleAddPhoto}>
         {isMakingPhoto ? (
           <Text style={styles.title}>Завантажте фото</Text>
@@ -108,7 +116,11 @@ const CreatePostsScreen = () => {
         )}
       </TouchableOpacity>
 
-      <TextInput placeholder="Назва" value={post.title}></TextInput>
+      <TextInput
+        placeholder="Назва"
+        value={post.title}
+        onChangeText={handleInputTitle}
+      ></TextInput>
     </View>
   );
 };
