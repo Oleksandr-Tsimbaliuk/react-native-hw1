@@ -106,8 +106,15 @@ const CreatePostsScreen = () => {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const handlePublishPost = () => {
     navigation.navigate("PostsScreen");
-    // const data = {};
-    // PostsScreen.unshift(data);
+    // const data = {
+    //   img: photo,
+    //   title: inputPhotoTitle,
+    //   comments: [],
+    //   likes: 0,
+    //   geoLocation: location,
+    //   // locationName: null,
+    // };
+    // users.post.unshift(data);
     handleResetPost();
   };
 

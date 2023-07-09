@@ -1,11 +1,20 @@
 import React from "react";
-import { TouchableOpacity, View, StyleSheet, Image, Text } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  ScrollView,
+} from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/core";
+import UserInfo from "../../components/UserInfo/UserInfo";
+import users from ".././../users";
 
 const PostsScreen = () => {
   const navigation = useNavigation();
   // const {
-  //   params: { userId },
+  //   params: { img, title, geoLocation },
   // } = useRoute();
 
   //   const handleLogoutPress = () => {
@@ -13,14 +22,15 @@ const PostsScreen = () => {
   //   };
 
   return (
-    <View style={styles.postsScreenContainer}>
+    <ScrollView style={styles.postsScreenContainer}>
       <View style={styles.postsUserContainer}>
-        {/* <Image></Image> */}
-        <Text>UserImage</Text>
-        <View style={styles.postsUserData}>
-          <Text>UserName</Text>
-          <Text>UserEmail</Text>
+        <UserInfo />
 
+        {users.posts.map(({ img, title, comments, likes, location }) => {
+          return <></>;
+        })}
+
+        <View style={styles.postsUserData}>
           <View style={styles.postsList}>
             <View style={styles.postItem}>
               {/* <Image style={styles.postImage}></Image> */}
@@ -38,7 +48,7 @@ const PostsScreen = () => {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -72,4 +82,5 @@ export const styles = StyleSheet.create({
   //   fontWeight: 500,
   //   fontSize: 17,
   // },
+  avatarImage: { width: 120, height: 120, borderRadius: 16 },
 });
