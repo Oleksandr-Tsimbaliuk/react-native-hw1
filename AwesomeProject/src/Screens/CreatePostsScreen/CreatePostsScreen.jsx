@@ -103,8 +103,11 @@ const CreatePostsScreen = () => {
     }
   };
 
-  const handlePost = () => {
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const handlePublishPost = () => {
     navigation.navigate("PostsScreen");
+    // const data = {};
+    // PostsScreen.unshift(data);
     handleResetPost();
   };
 
@@ -213,7 +216,7 @@ const CreatePostsScreen = () => {
 
         <TouchableOpacity
           style={styles.publishButton}
-          onPress={handlePost}
+          onPress={handlePublishPost}
         >
           <Text style={styles.publishButtonText}>Опубліковати</Text>
         </TouchableOpacity>
