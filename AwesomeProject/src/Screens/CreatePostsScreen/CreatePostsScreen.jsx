@@ -136,27 +136,10 @@ const CreatePostsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {photo ? (
-        <ImageBackground source={{ uri: photo }} style={styles.previewPhoto}>
-          <TouchableOpacity style={styles.button} onPress={makePhoto}>
-            <View
-              style={[
-                styles.takePhotoOut,
-                { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
-              ]}
-            >
-              <Ionicons
-                name="camera-outline"
-                size={24}
-                color={photo ? "#FFF" : "#BDBDBD"}
-              ></Ionicons>
-            </View>
-          </TouchableOpacity>
-        </ImageBackground>
-      ) : (
-        <Camera style={styles.camera} type={type} ref={setCameraRef}>
-          <View style={styles.photoView}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        {photo ? (
+          <ImageBackground source={{ uri: photo }} style={styles.previewPhoto}>
             <TouchableOpacity style={styles.button} onPress={makePhoto}>
               <View
                 style={[
@@ -171,51 +154,73 @@ const CreatePostsScreen = () => {
                 ></Ionicons>
               </View>
             </TouchableOpacity>
-          </View>
-        </Camera>
-      )}
-
-      <TouchableOpacity onPress={handleAddPhoto}>
-        {photo ? (
-          <Text style={styles.title}>Завантажити інше фото</Text>
+          </ImageBackground>
         ) : (
-          <Text style={styles.title}>Завантажте фото</Text>
+          <Camera style={styles.camera} type={type} ref={setCameraRef}>
+            <View style={styles.photoView}>
+              <TouchableOpacity style={styles.button} onPress={makePhoto}>
+                <View
+                  style={[
+                    styles.takePhotoOut,
+                    { backgroundColor: photo ? "#FFFFFF4D" : "#FFFFFF" },
+                  ]}
+                >
+                  <Ionicons
+                    name="camera-outline"
+                    size={24}
+                    color={photo ? "#FFF" : "#BDBDBD"}
+                  ></Ionicons>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Camera>
         )}
-      </TouchableOpacity>
 
-      <TextInput
-        style={styles.photoMetaInput}
-        placeholder="Назва..."
-        type="text"
-        required
-        name="photo"
-        value={inputPhotoTitle}
-        onChangeText={setInputPhotoTitle}
-      />
-
-      {/* <TextInput
-        style={styles.photoMetaInput}
-        placeholder="Місцевість"
-        type="text"
-        required
-        name="Місцевість"
-        value={inputPhotoLocation}
-        onChangeText={setInputPhotoLocation}
-      >
-        <TouchableOpacity></TouchableOpacity>
-      </TextInput> */}
-
-      <View style={styles.photoMetaLocation}>
-        <TouchableOpacity style={styles.areaButton} onPress={getCityAndCountry}>
-          <Ionicons name="location-outline" size={24} color="#BDBDBD" />
-          {country ? (
-            <Text style={styles.areaButtonText}>{`${city}, ${country}`}</Text>
+        <TouchableOpacity onPress={handleAddPhoto}>
+          {photo ? (
+            <Text style={styles.title}>Завантажити інше фото</Text>
           ) : (
-            <Text style={styles.areaButtonText}>Місцевість</Text>
+            <Text style={styles.title}>Завантажте фото</Text>
           )}
         </TouchableOpacity>
+
+        <TextInput
+          style={styles.photoMetaInput}
+          placeholder="Назва..."
+          type="text"
+          required
+          name="photo"
+          value={inputPhotoTitle}
+          onChangeText={setInputPhotoTitle}
+        />
+
+        {/* <TextInput
+          style={styles.photoMetaInput}
+          placeholder="Місцевість"
+          type="text"
+          required
+          name="Місцевість"
+          value={inputPhotoLocation}
+          onChangeText={setInputPhotoLocation}
+        >
+          <TouchableOpacity></TouchableOpacity>
+        </TextInput> */}
+
+        <View style={styles.photoMetaLocation}>
+          <TouchableOpacity
+            style={styles.areaButton}
+            onPress={getCityAndCountry}
+          >
+            <Ionicons name="location-outline" size={24} color="#BDBDBD" />
+            {country ? (
+              <Text style={styles.areaButtonText}>{`${city}, ${country}`}</Text>
+            ) : (
+              <Text style={styles.areaButtonText}>Місцевість</Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
