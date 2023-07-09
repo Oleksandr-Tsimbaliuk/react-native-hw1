@@ -43,7 +43,7 @@ const PostsScreen = () => {
               <Text style={{ marginBottom: 8 }}>{title}</Text>
               <View style={styles.postData}>
                 <TouchableOpacity
-                // onPress={() => navigation.navigate("Comments", {})}
+                  onPress={() => navigation.navigate("Comments")}
                 >
                   <Ionicons
                     name="chatbubble-outline"

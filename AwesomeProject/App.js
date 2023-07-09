@@ -10,6 +10,7 @@ import RegistrationScreen from "./src/Screens/RegistrationScreen/RegistrationScr
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
 import Home from "./src/Screens/Home/Home";
 import PostsScreen from "./src/Screens/PostsScreen/PostsScreen";
+import CommentsScreen from "./src/Screens/CommentsScreen/CommentsScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -44,6 +45,11 @@ export default function App() {
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={CommentsScreen}
+          options={{ headerShown: true }}
         />
         {/* <MainStack.Screen
           name="Posts"

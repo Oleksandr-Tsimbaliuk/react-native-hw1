@@ -1,7 +1,6 @@
 const posts = [
   {
     img: "https://planetofhotels.com/guide/sites/default/files/styles/big_gallery_image/public/text_gallery/gori.jpg",
-
     title: "Node.js",
     comments: [
       {
@@ -28,8 +27,7 @@ const posts = [
     title: "Node.js",
     comments: [],
     likes: 58,
-    locationName: "Ukraine",
-    geoLocation: { latitude: 49.2714836, longitude: 23.8227551 },
+    location: { latitude: 49.2714836, longitude: 23.8227551 },
   },
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/%D0%93%D1%80%D0%B0%D0%BC%D0%BF%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%8B.jpg/280px-%D0%93%D1%80%D0%B0%D0%BC%D0%BF%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%8B.jpg",
@@ -52,8 +50,7 @@ const posts = [
       },
     ],
     likes: 56,
-    locationName: "Ukraine",
-    geoLocation: { latitude: 49.2714836, longitude: 23.8227551 },
+    location: { latitude: 49.2714836, longitude: 23.8227551 },
   },
   {
     img: "https://izki.ua/image/cache/catalog/statti/maxresdefault-335x200w.jpg",
@@ -76,8 +73,7 @@ const posts = [
       },
     ],
     likes: 76,
-    locationName: "Ukraine",
-    geoLocation: { latitude: 49.2714836, longitude: 23.8227551 },
+    location: { latitude: 49.2714836, longitude: 23.8227551 },
   },
 ];
 
