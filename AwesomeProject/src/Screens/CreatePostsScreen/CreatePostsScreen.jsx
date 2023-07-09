@@ -204,18 +204,6 @@ const CreatePostsScreen = () => {
           onChangeText={setInputPhotoTitle}
         />
 
-        {/* <TextInput
-          style={styles.photoMetaInput}
-          placeholder="Місцевість"
-          type="text"
-          required
-          name="Місцевість"
-          value={inputPhotoLocation}
-          onChangeText={setInputPhotoLocation}
-        >
-          <TouchableOpacity></TouchableOpacity>
-        </TextInput> */}
-
         <View style={styles.photoMetaLocation}>
           <TouchableOpacity
             style={styles.locationButton}
@@ -386,3 +374,15 @@ export default CreatePostsScreen;
 //     title: text,
 //   }));
 // };
+
+ {/* <TextInput
+          style={styles.photoMetaInput}
+          placeholder="Місцевість"
+          type="text"
+          required
+          name="Місцевість"
+          value={inputPhotoLocation}
+          onChangeText={setInputPhotoLocation}
+        >
+          <TouchableOpacity></TouchableOpacity>
+        </TextInput> */}
