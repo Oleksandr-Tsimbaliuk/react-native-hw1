@@ -51,12 +51,21 @@ const PostsScreen = () => {
                     color="#BDBDBD"
                     // style={styles.commentIcon}
                   />
-                  <Text> coments{/* {post.comments.length} */}</Text>
+                  <Text> {comments.length}</Text>
                 </TouchableOpacity>
+
+                <Ionicons
+                  name="thumbs-up"  
+                  size={24}
+                  color="#BDBDBD"
+                  // style={styles.commentIcon}
+                />
+                <Text> {likes}</Text>
+
                 <TouchableOpacity
                   onPress={() =>
                     navigation.navigate("Map", {
-                      // location: post.location,
+                      location: location,
                     })
                   }
                 >
@@ -70,7 +79,7 @@ const PostsScreen = () => {
                   // style={styles.postArea}
                   >
                     city, country
-                    {/* {`${post.city}, ${post.country}`} */}
+                    {/* {`${posts.city}, ${posts.country}`} */}
                   </Text>
                 </TouchableOpacity>
               </View>
