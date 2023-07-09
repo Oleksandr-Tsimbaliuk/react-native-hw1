@@ -135,6 +135,14 @@ const CreatePostsScreen = () => {
     }
   };
 
+  const removePost = () => {
+    setInputPhotoTitle("");
+    setLocation(null);
+    setCountry(null);
+    setCity(null);
+    setPhoto(null);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -208,17 +216,33 @@ const CreatePostsScreen = () => {
 
         <View style={styles.photoMetaLocation}>
           <TouchableOpacity
-            style={styles.areaButton}
+            style={styles.locationButton}
             onPress={getCityAndCountry}
           >
             <Ionicons name="location-outline" size={24} color="#BDBDBD" />
             {country ? (
-              <Text style={styles.areaButtonText}>{`${city}, ${country}`}</Text>
+              <Text
+                style={styles.locationButtonText}
+              >{`${city}, ${country}`}</Text>
             ) : (
-              <Text style={styles.areaButtonText}>Місцевість</Text>
+              <Text style={styles.locationButtonText}>Місцевість</Text>
             )}
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity style={styles.publishButton}>
+          <Text style={styles.publishButtonText}>Опубліковати</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.removePostButton}
+          activeOpacity={0.5}
+          onPress={removePost}
+        >
+          <View style={styles.removePostButtonContainer}>
+            <Ionicons name="trash-outline" size={24} color="#BDBDBD"></Ionicons>
+          </View>
+        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -244,7 +268,6 @@ const styles = StyleSheet.create({
     // paddingTop: 95,
   },
   previewPhoto: {
-    // flex: 1,
     alignItems: "center",
     justifyContent: "center",
     // width: "100%",
@@ -253,14 +276,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: "hidden",
   },
-
-  button: {
-    // display: "flex",
-    // alignSelf: "center",
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
-
   takePhotoOut: {
     // backgroundColor: "#FFFFFF",
     // borderWidth: 2,
@@ -273,7 +288,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 50,
   },
-
   takePhotoInner: {
     borderWidth: 2,
     borderColor: "white",
@@ -289,7 +303,6 @@ const styles = StyleSheet.create({
     color: "#BDBDBD",
     marginTop: 8,
   },
-
   photoMetaInput: {
     display: "flex",
     alignItems: "center",
@@ -306,7 +319,6 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderBottomWidth: 1,
   },
-
   photoMetaLocation: {
     display: "flex",
     flexDirection: "row",
@@ -320,16 +332,44 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderBottomWidth: 1,
   },
-  areaButton: {
+  locationButton: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 2,
   },
-  areaButtonText: {
+  locationButtonText: {
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     color: "#BDBDBD",
+  },
+  publishButton: {
+    marginTop: 32,
+    marginBottom: 16,
+    padding: 16,
+    height: 50,
+    width: "100%",
+    borderRadius: 100,
+    backgroundColor: "#FF6C00",
+  },
+  publishButtonText: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
+    lineHeight: 19,
+    textAlign: "center",
+    color: "#FFFFFF",
+  },
+  removePostButton: {
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  removePostButtonContainer: {
+    backgroundColor: "#F6F6F6",
+    width: 70,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
   },
 });
 
