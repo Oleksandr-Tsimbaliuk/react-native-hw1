@@ -28,22 +28,12 @@ const CreatePostsScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  // const [isMakingPhoto, setIsMakingPhoto] = useState(true);
   const [inputPhotoTitle, setInputPhotoTitle] = useState("");
   // const [inputPhotoLocation, setInputPhotoLocation] = useState("");
   const [location, setLocation] = useState(null);
   const [country, setCountry] = useState(null);
   const [city, setCity] = useState(null);
   const [photo, setPhoto] = useState(null);
-  // const [post, setPost] = useState({
-  //   title: "",
-  //   location: {},
-  //   comments: [],
-  //   photo: {
-  //     uri: "",
-  //   },
-  //   country: "",
-  // });
 
   useEffect(() => {
     (async () => {
@@ -113,8 +103,9 @@ const CreatePostsScreen = () => {
     }
   };
 
-  const handleNavigateToPosts = () => {
+  const handlePost = () => {
     navigation.navigate("PostsScreen");
+    handleResetPost();
   };
 
   const getCityAndCountry = async () => {
@@ -137,7 +128,7 @@ const CreatePostsScreen = () => {
     }
   };
 
-  const handleRemovePost = () => {
+  const handleResetPost = () => {
     setInputPhotoTitle("");
     setLocation(null);
     setCountry(null);
@@ -222,7 +213,7 @@ const CreatePostsScreen = () => {
 
         <TouchableOpacity
           style={styles.publishButton}
-          onPress={handleNavigateToPosts}
+          onPress={handlePost}
         >
           <Text style={styles.publishButtonText}>Опубліковати</Text>
         </TouchableOpacity>
@@ -230,7 +221,7 @@ const CreatePostsScreen = () => {
         <TouchableOpacity
           style={styles.removePostButton}
           activeOpacity={0.5}
-          onPress={handleRemovePost}
+          onPress={handleResetPost}
         >
           <View style={styles.removePostButtonContainer}>
             <Ionicons name="trash-outline" size={24} color="#BDBDBD"></Ionicons>
@@ -375,7 +366,8 @@ export default CreatePostsScreen;
 //   }));
 // };
 
- {/* <TextInput
+{
+  /* <TextInput
           style={styles.photoMetaInput}
           placeholder="Місцевість"
           type="text"
@@ -385,4 +377,5 @@ export default CreatePostsScreen;
           onChangeText={setInputPhotoLocation}
         >
           <TouchableOpacity></TouchableOpacity>
-        </TextInput> */}
+        </TextInput> */
+}
