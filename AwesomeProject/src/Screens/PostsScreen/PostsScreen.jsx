@@ -55,7 +55,7 @@ const PostsScreen = () => {
                 </TouchableOpacity>
 
                 <Ionicons
-                  name="thumbs-up"  
+                  name="thumbs-up"
                   size={24}
                   color="#BDBDBD"
                   // style={styles.commentIcon}
@@ -65,7 +65,7 @@ const PostsScreen = () => {
                 <TouchableOpacity
                   onPress={() =>
                     navigation.navigate("Map", {
-                      location: location,
+                      params: location,
                     })
                   }
                 >

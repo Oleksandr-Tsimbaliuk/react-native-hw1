@@ -11,6 +11,7 @@ import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
 import Home from "./src/Screens/Home/Home";
 import PostsScreen from "./src/Screens/PostsScreen/PostsScreen";
 import CommentsScreen from "./src/Screens/CommentsScreen/CommentsScreen";
+import MapScreen from "./src/Screens/MapScreen/MapScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -49,6 +50,11 @@ export default function App() {
         <MainStack.Screen
           name="Comments"
           component={CommentsScreen}
+          options={{ headerShown: true }}
+        />
+        <MainStack.Screen
+          name="Map"
+          component={MapScreen}
           options={{ headerShown: true }}
         />
         {/* <MainStack.Screen
