@@ -23,6 +23,8 @@ import {
 } from "react-native";
 
 const CreatePostsScreen = () => {
+  const navigation = useNavigation();
+
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -74,7 +76,7 @@ const CreatePostsScreen = () => {
     return <Text>No access to camera</Text>;
   }
 
-  const makePhoto = async () => {
+  const handleMakePhoto = async () => {
     if (photo) {
       return setPhoto(null);
     }
@@ -111,9 +113,9 @@ const CreatePostsScreen = () => {
     }
   };
 
-  // const handleNavigateToPosts = () => {
-  //   navigation.navigate("PostsScreen");
-  // };
+  const handleNavigateToPosts = () => {
+    navigation.navigate("PostsScreen");
+  };
 
   const getCityAndCountry = async () => {
     if (location) {
@@ -135,7 +137,7 @@ const CreatePostsScreen = () => {
     }
   };
 
-  const removePost = () => {
+  const handleRemovePost = () => {
     setInputPhotoTitle("");
     setLocation(null);
     setCountry(null);
@@ -148,7 +150,7 @@ const CreatePostsScreen = () => {
       <View style={styles.container}>
         {photo ? (
           <ImageBackground source={{ uri: photo }} style={styles.previewPhoto}>
-            <TouchableOpacity style={styles.button} onPress={makePhoto}>
+            <TouchableOpacity style={styles.button} onPress={handleMakePhoto}>
               <View
                 style={[
                   styles.takePhotoOut,
@@ -166,7 +168,7 @@ const CreatePostsScreen = () => {
         ) : (
           <Camera style={styles.camera} type={type} ref={setCameraRef}>
             <View style={styles.photoView}>
-              <TouchableOpacity style={styles.button} onPress={makePhoto}>
+              <TouchableOpacity style={styles.button} onPress={handleMakePhoto}>
                 <View
                   style={[
                     styles.takePhotoOut,
@@ -230,14 +232,17 @@ const CreatePostsScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.publishButton}>
+        <TouchableOpacity
+          style={styles.publishButton}
+          onPress={handleNavigateToPosts}
+        >
           <Text style={styles.publishButtonText}>Опубліковати</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.removePostButton}
           activeOpacity={0.5}
-          onPress={removePost}
+          onPress={handleRemovePost}
         >
           <View style={styles.removePostButtonContainer}>
             <Ionicons name="trash-outline" size={24} color="#BDBDBD"></Ionicons>
