@@ -7,9 +7,11 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import { useNavigation, useRoute } from "@react-navigation/core";
 import UserInfo from "../../components/UserInfo/UserInfo";
-import users from ".././../users";
+import posts from "../../posts";
 
 const PostsScreen = () => {
   const navigation = useNavigation();
@@ -26,27 +28,55 @@ const PostsScreen = () => {
       <View style={styles.postsUserContainer}>
         <UserInfo />
 
-        {users.posts.map(({ img, title, comments, likes, location }) => {
-          return <></>;
+        {posts.map(({ img, title, comments, likes, location }) => {
+          return (
+            <View>
+              <Image
+                source={{ uri: img }}
+                style={{
+                  width: "100%",
+                  height: 240,
+                  marginBottom: 8,
+                  borderRadius: 8,
+                }}
+              />
+              <Text style={{ marginBottom: 8 }}>{title}</Text>
+              <View style={styles.postData}>
+                <TouchableOpacity
+                // onPress={() => navigation.navigate("Comments", {})}
+                >
+                  <Ionicons
+                    name="chatbubble-outline"
+                    size={24}
+                    color="#BDBDBD"
+                    // style={styles.commentIcon}
+                  />
+                  <Text> coments{/* {post.comments.length} */}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Map", {
+                      // location: post.location,
+                    })
+                  }
+                >
+                  <Ionicons
+                    name="location-outline"
+                    size={24}
+                    color="#BDBDBD"
+                    // style={styles.areaIcon}
+                  />
+                  <Text
+                  // style={styles.postArea}
+                  >
+                    city, country
+                    {/* {`${post.city}, ${post.country}`} */}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          );
         })}
-
-        <View style={styles.postsUserData}>
-          <View style={styles.postsList}>
-            <View style={styles.postItem}>
-              {/* <Image style={styles.postImage}></Image> */}
-              <Text>Image</Text>
-              <Text style={styles.postTitle}>Title</Text>
-            </View>
-            <View style={styles.postData}>
-              <TouchableOpacity>
-                <Text>post.comments</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text>post.location</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
       </View>
     </ScrollView>
   );
