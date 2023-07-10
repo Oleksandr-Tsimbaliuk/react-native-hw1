@@ -127,7 +127,8 @@ const CreatePostsScreen = () => {
         );
         const data = await response.json();
         if (data.address) {
-          const locationCity = data.address.city;
+          console.log(data.address);
+          const locationCity = data.address.town ?? data.address.city;
           const locationCountry = data.address.country;
           setCity(locationCity);
           setCountry(locationCountry);
