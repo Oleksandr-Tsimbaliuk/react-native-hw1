@@ -12,6 +12,9 @@ import Home from "./src/Screens/Home/Home";
 import PostsScreen from "./src/Screens/PostsScreen/PostsScreen";
 import CommentsScreen from "./src/Screens/CommentsScreen/CommentsScreen";
 import MapScreen from "./src/Screens/MapScreen/MapScreen";
+import { Provider } from "react-redux";
+import { persistor, store } from "redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,51 +30,55 @@ export default function App() {
 
   const MainStack = createStackNavigator();
   return (
-    <NavigationContainer>
-      <MainStack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ headerShown: false }}
-      >
-        <MainStack.Screen
-          name="Registration"
-          component={RegistrationScreen}
-          options={{ headerShown: false }}
-        />
-        <MainStack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <MainStack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <MainStack.Screen
-          name="Comments"
-          component={CommentsScreen}
-          options={{ headerShown: true }}
-        />
-        <MainStack.Screen
-          name="Map"
-          component={MapScreen}
-          options={{ headerShown: true }}
-        />
-        {/* <MainStack.Screen
-          name="Posts"
-          component={PostsScreen}
-          options={{
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This is a button!")}
-                title="Press me"
-              />
-            ),
-          }}
-        /> */}
-      </MainStack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <MainStack.Navigator
+            initialRouteName="Home"
+            screenOptions={{ headerShown: false }}
+          >
+            <MainStack.Screen
+              name="Registration"
+              component={RegistrationScreen}
+              options={{ headerShown: false }}
+            />
+            <MainStack.Screen
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            />
+            <MainStack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+            <MainStack.Screen
+              name="Comments"
+              component={CommentsScreen}
+              options={{ headerShown: true }}
+            />
+            <MainStack.Screen
+              name="Map"
+              component={MapScreen}
+              options={{ headerShown: true }}
+            />
+            {/* <MainStack.Screen
+              name="Posts"
+              component={PostsScreen}
+              options={{
+                headerRight: () => (
+                  <Button
+                    onPress={() => alert("This is a button!")}
+                    title="Press me"
+                  />
+                ),
+              }}
+            /> */}
+          </MainStack.Navigator>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 }
 
